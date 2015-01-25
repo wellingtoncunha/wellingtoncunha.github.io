@@ -59,8 +59,51 @@
 </slide>
 
 <slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>2012 GDP functionalities</h2>
+  </hgroup>
   <article data-timings="">
-    
+    <h1>You can filter the countries by their GDP just by using the slide bar:</h1>
+
+<p><br>
+<img src="assets/img/app.png" alt="alt text" title="Title"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>2012 GDP Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>The data are loaded online:</h1>
+
+<pre><code class="r">library(&quot;plyr&quot;)
+GDP &lt;- read.csv(&quot;http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv&quot;, skip=5, header = FALSE, nrows=190)
+GDP &lt;- GDP[, c(1, 2, 4, 5)]
+colnames(GDP) &lt;- c(&quot;Code&quot;, &quot;Ranking&quot;, &quot;Country&quot;, &quot;GDP&quot;)
+GDP$Ranking &lt;- as.integer(GDP$Ranking)
+GDP$GDP &lt;- as.numeric(gsub(&quot;,&quot;, &quot;&quot;, gsub(&quot; &quot;, &quot;&quot;, GDP$GDP)))
+
+EDU &lt;- read.csv(&quot;http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv&quot;)
+mergedData &lt;- merge(GDP, EDU, by.x=&quot;Code&quot;, by.y=&quot;CountryCode&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>2012 GDP - getting access</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>You can get access to GDP application just by clicking:</h1>
+
+<p><br>
+<a href="https://wellingtoncunha.shinyapps.io/Project/" target="_blank"><a href="https://wellingtoncunha.shinyapps.io/Project/">https://wellingtoncunha.shinyapps.io/Project/</a></a></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -77,8 +120,20 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title=''>
+        data-slide=2 title='2012 GDP functionalities'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='2012 GDP Data'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='2012 GDP - getting access'>
+         4
       </a>
     </li>
   </ul>
